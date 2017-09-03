@@ -95,6 +95,67 @@ require("../init.php");
             $output .= formatCurrency($quarterly/3); 
         }
 
+        if (($billingcycle =="monthly") AND ($monthly>=0)) {
+            $output .= formatCurrency($monthly);
+        }
+
+
+    }
+
+
+    widgetoutput($output);
+
+function widgetoutput($value) {
+    echo "document.write('".addslashes($value)."');";
+    exit;
+}
+    $data = mysql_fetch_array($result);
+    $msetupfee = $data['msetupfee'];
+    $qsetupfee = $data['qsetupfee'];
+    $ssetupfee = $data['ssetupfee'];
+    $asetupfee = $data['asetupfee'];
+    $bsetupfee = $data['bsetupfee'];
+    $tsetupfee = $data['tsetupfee'];
+    $monthly = $data['monthly'];
+    $quarterly = $data['quarterly'];
+    $semiannually = $data['semiannually'];
+    $annually = $data['annually'];
+    $biennially = $data['biennially'];
+    $triennially = $data['triennially'];
+
+    $systemurl = App::getSystemUrl();
+
+    if ($paytype=="free") {
+
+        $output .= $_LANG['orderfree'];
+
+    } elseif ($paytype=="onetime") {
+
+        $output .= formatCurrency($monthly);
+        if ($msetupfee!="0.00") $output .= " + ".formatCurrency($msetupfee)." ".$_LANG['ordersetupfee'];
+
+    } elseif ($paytype=="recurring") {
+
+        if (($billingcycle =="triennially") AND ($triennially>=0)) {
+            $output .= formatCurrency($triennially/36); 
+        }
+
+        if (($billingcycle =="biennially") AND ($biennially>=0)) {
+            $output .= formatCurrency($biennially/24);  
+        }
+
+        if (($billingcycle =="annually") AND ($annually>=0)) {
+            $output .= formatCurrency($annually/12);    
+        }
+
+        if (($billingcycle =="semiannually") AND ($semiannually>=0)) {
+            $output .= formatCurrency($semiannually/6);       
+        }
+
+        if (($billingcycle =="quartely") AND ($quarterly>=0)) {
+            $output .= formatCurrency($quarterly/3); 
+        }
+
         if ($monthly>=0) {
             $output .= formatCurrency($monthly);
         }
