@@ -7,9 +7,9 @@ require("../init.php");
 /*
 *** USAGE SAMPLES ***
 
-<script language="javascript" src="feeds/productpricing.php?pid=1&currency=1&billingcycle=semiannually"></script>
+<script language="javascript" src="feeds/productpricing_monthly.php?pid=1&currency=1&billingcycle=semiannually"></script>
 
-<script language="javascript" src="feeds/productpricing.php?pid=5&currency=2&billingcycle=semiannually"></script>
+<script language="javascript" src="feeds/productpricing_monthly.php?pid=5&currency=2&billingcycle=semiannually"></script>
 
 */
     $whmcs = Application::getInstance();
