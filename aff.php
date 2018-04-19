@@ -47,7 +47,7 @@ if ($whmcs->get_req_var('gocart')) {
     redir($reqvars,"cart.php");
 }
 if ($page = $whmcs->get_req_var('page')) {
-		header( "Location: https://webalternative.net/$page" );
+		header( "Location: https://MY_DOMAIN.XXX/$page" );
 		exit;
 	}
 
